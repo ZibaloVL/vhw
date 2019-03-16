@@ -1,45 +1,43 @@
 <template>
-  <div id="app">
-   <div v-for="(punckt, index) in punckts " :key="index">
-     <h2>{{ punckt.title }}</h2>
-    
-      <div  class = "form-check" style = "text-align: left"
-        v-for="(answer, index_answer) in punckt.answers"  :key="index_answer">      
-        <input  class = "form-check-input"
-            :type="punckt.type" 
-           :value="answer"
-           v-model="choise_answer[index]"
-           >
-         <label class="form-check-label">{{answer}}</label>  
-      </div>
-
-      <div class="form-check">
-        <label  class="form-check-input"
-         v-for="(answer, index_answer) in punckt.answers"  :key="index_answer">  
-         <input  class = "form-check-input"
-            :type="punckt.type" 
-            :value="answer"
-            v-model="choise_answer[index]"
-           >
-          {{answer}}
-        </label>
-      </div>
-
-
-    
-       
-     
-
-   </div>
+  <div>
+    <div v-if = "index < punckts.length">
+      <app-etap
+        :etap = "punckts[index]"      
+      >
+      </app-etap>
+      
+       <button class="btn btn-primary"
+         @click="index++">SEND</button>
+    </div>
+    <div v-else > 
+      <h1>end</h1>
+    </div>   
   </div>
 </template>
 
 <script>
+
+import AppEtap from './components/Etap.vue';
+
 export default {
-  name: 'app',
-  data () {
+    components:{
+      AppEtap
+    },
+    created(){
+      
+      for(let i = 0; i < this.punckts.length; i++) {
+        this.d.push([]);
+        for (let n = 0; n <this.punckts[i].answers.length; n++) {
+          this.d[i][n]=false;
+          
+        } 
+      }
+      console.log (this.d);
+    },
+    data(){
     return {
-      choise_answer:[],
+      index: 0,//number etap now
+      d:[],
       punckts: [
                 {
                   type: 'radio',
@@ -64,7 +62,8 @@ export default {
                 }
               ]
     }
-  }
+  },
+  
 }
 </script>
 
