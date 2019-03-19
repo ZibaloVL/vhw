@@ -1,45 +1,26 @@
 <template>
   <div id="app">
-   <div v-for="(punckt, index) in punckts " :key="index">
-     <h2>{{ punckt.title }}</h2>
-    
-      <div  class = "form-check" style = "text-align: left"
-        v-for="(answer, index_answer) in punckt.answers"  :key="index_answer">      
-        <input  class = "form-check-input"
-            :type="punckt.type" 
-           :value="answer"
-           v-model="choise_answer[index]"
-           >
-         <label class="form-check-label">{{answer}}</label>  
-      </div>
-
-      <div class="form-check">
-        <label  class="form-check-input"
-         v-for="(answer, index_answer) in punckt.answers"  :key="index_answer">  
-         <input  class = "form-check-input"
-            :type="punckt.type" 
-            :value="answer"
-            v-model="choise_answer[index]"
-           >
-          {{answer}}
-        </label>
-      </div>
-
-
-    
-       
-     
-
+   
+   <div v-if = "numCart  < punckts.length">
+    <app-cart>
+      
+    </app-cart>
    </div>
   </div>
 </template>
 
 <script>
+
+import AppCart from './components/Cart'
+
 export default {
   name: 'app',
+  components: {
+      AppCart
+  },
   data () {
     return {
-      choise_answer:[],
+      numCart:0,//номер карточки вопросов
       punckts: [
                 {
                   type: 'radio',
