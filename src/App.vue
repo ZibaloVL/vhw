@@ -7,6 +7,7 @@
       :answers = punckts[numCarts].answers
       :typeInput = punckts[numCarts].type
       :num = numCarts
+      :cartAnswer = cartAnswers[numCarts]
     >      
     </app-cart>
     </div>
@@ -19,7 +20,7 @@
 </template>
 
 <script>
-//сделать хук с массивом ошибок (строка||массив в зависимости от типа)
+
 import AppCart from './components/Cart'
 
 export default {
@@ -27,9 +28,17 @@ export default {
   components: {
       AppCart
   },
+  created() {
+    for(let i = 0; i <this.punckts.length; i++){
+      if (this.punckts[i].type === 'radio'){this.cartAnswers.push('');}
+        else{this.cartAnswers.push(Array());}
+        console.log(this.cartAnswers);
+    }
+  },
   data () {
     return {
-      numCarts: 0,//номер карточки вопросов
+      numCarts: 0, //номер карточки вопросов
+      cartAnswers:[], //карта ответов
       punckts: [
                 {
                   type: 'radio',

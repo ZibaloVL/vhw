@@ -10,11 +10,11 @@
         >
             <input :type = "typeInput"
                 :value = "answer"
-                v-model = "ans[num]"  
+                v-model = "cartAnswer"  
             >
             <label > {{answer}}  </label>   
         </div>
-        <h3>{{ ans[num] }}</h3>
+        <h3>{{ cartAnswer }}</h3>
     </div>
 </template>
 
@@ -22,7 +22,7 @@
 
 export default {
 
-    props: ['title', 'answers', 'typeInput', 'num'],
+    props: ['title', 'answers', 'typeInput', 'num', 'cartAnswer'],
 
     data(){
         return{
