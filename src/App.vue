@@ -1,16 +1,25 @@
 <template>
   <div id="app">
    
-   <div v-if = "numCart  < punckts.length">
-    <app-cart>
-      
+   <div v-if = "numCarts  < punckts.length">
+    <app-cart
+      :title = punckts[numCarts].title
+      :answers = punckts[numCarts].answers
+      :typeInput = punckts[numCarts].type
+      :num = numCarts
+    >      
     </app-cart>
-   </div>
+    </div>
+    <div v-else>TABLE</div>
+    <button class = "btn btn-primary"
+      @click="numCarts++"
+    >ДАЛЬШЕ</button>
+   
   </div>
 </template>
 
 <script>
-
+//сделать хук с массивом ошибок (строка||массив в зависимости от типа)
 import AppCart from './components/Cart'
 
 export default {
@@ -20,7 +29,7 @@ export default {
   },
   data () {
     return {
-      numCart:0,//номер карточки вопросов
+      numCarts: 0,//номер карточки вопросов
       punckts: [
                 {
                   type: 'radio',
