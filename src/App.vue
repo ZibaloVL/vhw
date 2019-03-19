@@ -30,15 +30,17 @@ export default {
   },
   created() {
     for(let i = 0; i <this.punckts.length; i++){
-      if (this.punckts[i].type === 'radio'){this.cartAnswers.push('');}
-        else{this.cartAnswers.push(Array());}
+      if (this.punckts[i].type === 'radio'){this.cartAnswers[i] = "";}
+        else{
+          this.cartAnswers[i] = Array();
+         }
         console.log(this.cartAnswers);
     }
   },
   data () {
     return {
       numCarts: 0, //номер карточки вопросов
-      cartAnswers:[], //карта ответов
+      cartAnswers:{}, //карта ответов
       punckts: [
                 {
                   type: 'radio',
