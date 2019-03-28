@@ -22,6 +22,7 @@ export default {
   },
   data () {
     return {
+      shablonAnswers:[],//шаблон ответов экзаменуемого
       numCart:0,//номер карточки вопросов
       punckts: [
                 {
@@ -46,8 +47,21 @@ export default {
                   ]
                 }
               ]
+
+    }
+  },
+  created(){
+    for(let i = 0; i < this.punckts.length; i++){
+      if(this.punckts[i].type === 'radio'){this.shablonAnswers[i] = false;}
+        else if (this.punckts[i].type === 'checkbox'){
+          this.shablonAnswers[i] = [];
+           for(let n=0; n < this.punckts[i].answers.length; n++){
+           this.shablonAnswers[i].push(false);}
+      }
+    console.log("shablonAnswers  " + this.shablonAnswers);  
     }
   }
+  
 }
 </script>
 
