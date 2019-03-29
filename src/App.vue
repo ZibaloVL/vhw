@@ -16,11 +16,13 @@
 <script>
 
 import AppCart from './components/Cart'
+import AppTable from './components/Tableanswer'
 
 export default {
   name: 'app',
   components: {
-      AppCart
+      AppCart,
+      AppTable
   },
   data () {
     return {
@@ -54,21 +56,7 @@ export default {
   },
   methods: {
     getAnswers(chekButton, index){
-      console.log("таблица "+ index);
-      console.log("ответ", chekButton);
-    }
-  },
-
-  
-  created(){
-    for(let i = 0; i < this.punckts.length; i++){
-      if(this.punckts[i].type === 'radio'){this.shablonAnswers[i] = false;}
-        else if (this.punckts[i].type === 'checkbox'){
-          this.shablonAnswers[i] = [];
-           for(let n=0; n < this.punckts[i].answers.length; n++){
-           this.shablonAnswers[i].push(false);}
-      }
-      console.log("shablonAnswers  " + this.shablonAnswers);  
+        this.shablonAnswers.push(chekButton);
     }
   }
   
