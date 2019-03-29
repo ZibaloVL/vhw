@@ -6,9 +6,17 @@
             <div class="form-check">
                 <div v-for="(answer, index) in punckt.answers" :key="index">  
                     <label class="form-check-label">
-                        <input  :type="punckt.type" class="form-check-input"   
-                        @click="changeAnswer($event, index)"
-                        
+                        <input v-if="punckt.type==='radio'"
+                            :type="punckt.type" class="form-check-input"   
+                            @change="changeAnswer($event, index)"
+                            :value="index"
+                            v-model="chekButton[0]"
+                        >
+                        <input v-else
+                            :type="punckt.type" class="form-check-input"   
+                            @change="changeAnswer($event, index)"
+                            :value="index"
+                            v-model="chekButton"
                         >
                         {{answer}}
                     </label>
@@ -25,17 +33,20 @@ export default {
     props:["punckt", "shablonAnswer"],
     data(){
         return{
-            metka:false,
+            chekButton:[]
         }
     },
     computed: {
-        typeQuestion() {
-             this.punckt.type === 'radio' ;  
-        }
+       typeQuestion() {
+             (this.punckt.type === 'radio') ?  this.radioButton : this.chekButton ;  
+             
+        },
+
+
+
     },
- // разобраться с переключениями при ответах
-// привязать value к значению шаблона ответов
-// изменить клик на чандж
+ // организация проброса значений для вывода элементов: проброс массива и его перебор
+// 
 
     methods: {
         changeAnswer(e, numAnswer){
