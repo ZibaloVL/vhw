@@ -4,6 +4,8 @@
    
     <app-cart  v-for="(punckt, index) in punckts" :key="index"
       :punckt="punckt"
+      :shablonAnswer="shablonAnswers[index]"
+      @changeAnswers="getAnswers($event, index)" 
     >
       
     </app-cart>
@@ -50,6 +52,14 @@ export default {
 
     }
   },
+  methods: {
+    getAnswers(numAnswer, index){
+      console.log("таблица "+ index);
+      console.log("ответ", numAnswer);
+    }
+  },
+
+  
   created(){
     for(let i = 0; i < this.punckts.length; i++){
       if(this.punckts[i].type === 'radio'){this.shablonAnswers[i] = false;}
@@ -58,7 +68,7 @@ export default {
            for(let n=0; n < this.punckts[i].answers.length; n++){
            this.shablonAnswers[i].push(false);}
       }
-    console.log("shablonAnswers  " + this.shablonAnswers);  
+      console.log("shablonAnswers  " + this.shablonAnswers);  
     }
   }
   
