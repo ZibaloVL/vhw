@@ -53,9 +53,9 @@ export default {
     }
   },
   methods: {
-    getAnswers(numAnswer, index){
+    getAnswers(chekButton, index){
       console.log("таблица "+ index);
-      console.log("ответ", numAnswer);
+      console.log("ответ", chekButton);
     }
   },
 

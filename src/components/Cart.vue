@@ -1,6 +1,8 @@
 <template>
     <div>  
-        <form action="">
+        <form action=""
+            @submit.prevent="changeAnswer($event)"
+        >
             <h2>{{punckt.title}}</h2>
             <hr>
             <div class="form-check">
@@ -8,13 +10,13 @@
                     <label class="form-check-label">
                         <input v-if="punckt.type==='radio'"
                             :type="punckt.type" class="form-check-input"   
-                            @change="changeAnswer($event, index)"
+               
                             :value="index"
                             v-model="chekButton[0]"
                         >
                         <input v-else
                             :type="punckt.type" class="form-check-input"   
-                            @change="changeAnswer($event, index)"
+                            
                             :value="index"
                             v-model="chekButton"
                         >
@@ -37,23 +39,15 @@ export default {
         }
     },
     computed: {
-       typeQuestion() {
-             (this.punckt.type === 'radio') ?  this.radioButton : this.chekButton ;  
-             
-        },
-
-
-
+       
     },
  // организация проброса значений для вывода элементов: проброс массива и его перебор
-// 
+// --проброс массива  chekButton наверх . Наверху присвоить значение массиву для вывода в таблицу
 
     methods: {
-        changeAnswer(e, numAnswer){
-             console.log('11111');
-             this.metka =!this.metka;
-            
-            this.$emit('changeAnswers', numAnswer);
+        changeAnswer(e){
+             console.log('11111');     
+            this.$emit('changeAnswers', this.chekButton);
            
         }
     }
