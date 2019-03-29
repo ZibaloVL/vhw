@@ -2,13 +2,19 @@
   <div id="app">
    
    
-    <app-cart  v-for="(punckt, index) in punckts" :key="index"
+    <app-cart  
+      v-show="numCart === index"
+      v-for="(punckt, index) in punckts" :key="index"
       :punckt="punckt"
       :shablonAnswer="shablonAnswers[index]"
       @changeAnswers="getAnswers($event, index)" 
     >
-      
     </app-cart>
+    <app-table v-show="numCart === punckts.length"
+
+    >
+
+    </app-table>
    
   </div>
 </template>
@@ -57,6 +63,7 @@ export default {
   methods: {
     getAnswers(chekButton, index){
         this.shablonAnswers.push(chekButton);
+        this.numCart++;
     }
   }
   
