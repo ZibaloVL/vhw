@@ -31,11 +31,12 @@ export default {
     computed: {
       
     },
- // разобраться с массивами многомергыми
+ 
  // нет свойтсва длины. попробовать задавать через ыуе// сделать обьектом
+ 
     methods: {
          anser(index){
-            console.log("shablonAnswers____" + this.shablonAnswers[index].length);
+            console.log("shablonAnswers____" + this.shablonAnswers.length);
              
            /* 
             let ans = '';

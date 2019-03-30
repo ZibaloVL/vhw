@@ -41,7 +41,7 @@ export default {
     computed: {
        
     },
-
+// необходимо из бавиться от массива  или добавлять set
 
     methods: {
         changeAnswer(e){

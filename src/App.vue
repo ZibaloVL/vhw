@@ -62,9 +62,11 @@ export default {
     }
   },
   methods: {
-    //передаётся  не массив , а строка
+    
     getAnswers(chekButton, index){
-        this.shablonAnswers.push(chekButton);
+
+        this.$set( this.shablonAnswers, index, chekButton)
+        //this.shablonAnswers.push(chekButton);
         this.numCart++;
         console.log('getAnswer' + this.shablonAnswers);
     }
