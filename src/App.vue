@@ -11,7 +11,8 @@
     >
     </app-cart>
     <app-table v-show="numCart === punckts.length"
-
+      :punckts="punckts"
+      :shablonAnswers="shablonAnswers"
     >
 
     </app-table>
@@ -61,10 +62,13 @@ export default {
     }
   },
   methods: {
+    //передаётся  не массив , а строка
     getAnswers(chekButton, index){
         this.shablonAnswers.push(chekButton);
         this.numCart++;
+        console.log('getAnswer' + this.shablonAnswers);
     }
+    
   }
   
 }
