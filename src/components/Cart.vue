@@ -43,19 +43,11 @@ export default {
     
 
     methods: {
-        //событие выбора ответа
-      /*  onChange(e, index){
-        if(this.punckt.type === 'radio') {
-           this.$set(this.chekButton, 0, index);
-       };
-        if(this.punckt.type === 'radio') {
-           this.$set(this.chekButton, index, index);
-       }
-    },*/
+        
         //событие вспытие ответов формы 
         changeAnswer(e){
-             console.log('11111');     
-            this.$emit('changeAnswers', this.chekButton);
+            
+            this.$emit('changeAnswers', this.variantsAnswers);
            
         }
     }

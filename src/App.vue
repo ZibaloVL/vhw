@@ -13,7 +13,6 @@
       :punckts="punckts"
       :shablonAnswers="shablonAnswers"
     >
-
     </app-table>
    
   </div>
@@ -33,7 +32,7 @@ export default {
   data () {
     return {
       shablonAnswers:[],//шаблон ответов экзаменуемого
-      numCart:0,//номер карточки вопросов
+      numCart:0,//номер карточки вопросов необходима для показа страницы
       punckts: [
                 {
                   type: 'radio',
@@ -62,12 +61,11 @@ export default {
   },
   methods: {
     
-    getAnswers(chekButton, index){
+    getAnswers(variantsAnswers, index){
 
-        this.$set( this.shablonAnswers, index, chekButton)
-        //this.shablonAnswers.push(chekButton);
+        this.$set( this.shablonAnswers, index,  variantsAnswers)
         this.numCart++;
-        console.log('getAnswer' + this.shablonAnswers);
+        
     }
     
   }
