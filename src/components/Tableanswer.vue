@@ -22,7 +22,9 @@
 // join ответов создать
 
 export default {
-    props:["punckts", "shablonAnswers"],
+    props:{
+        punckts:Array, 
+        shablonAnswers:Object},
     data(){
         return{
             
@@ -36,7 +38,8 @@ export default {
  
     methods: {
          anser(index){
-            console.log("shablonAnswers____" + this.shablonAnswers.length);
+            console.log("shablonAnswers____");
+            console.log("shablonAnswers____" + this.shablonAnswers[index]);
              
            /* 
             let ans = '';

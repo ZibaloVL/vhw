@@ -33,7 +33,7 @@ export default {
   },
   data () {
     return {
-      shablonAnswers:[],//шаблон ответов экзаменуемого
+      shablonAnswers:{},//шаблон ответов экзаменуемого
       numCart:0,//номер карточки вопросов
       punckts: [
                 {
