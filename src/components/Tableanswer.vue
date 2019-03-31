@@ -24,7 +24,8 @@
 export default {
     props:{
         punckts:Array, 
-        shablonAnswers:Object},
+        shablonAnswers:Array
+        },
     data(){
         return{
             

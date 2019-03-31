@@ -8,9 +8,10 @@
             <div class="form-check">
                 <div v-for="(answer, index) in punckt.answers" :key="index">  
                     <label class="form-check-label">
-                        <input 
-                            :type="punckt.type" class="form-check-input"   
-                            @change="onChange($event, index)"
+                        <input class="form-check-input" 
+                            :type="punckt.type"  
+                            :value="index"
+                            v-model="variantsAnswers"
                         >
                         {{answer}}
                     </label>
@@ -25,11 +26,13 @@
 <script>
 
 export default {
-    props:{punckt:Object,
-            shablonAnswer:Object},
+    props:{
+            punckt:Object,
+            
+            },
     data(){
         return{
-            chekButton:{}
+               variantsAnswers:[]
         }
     },
     computed: {
