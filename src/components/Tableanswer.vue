@@ -34,22 +34,20 @@ export default {
     computed: {
       
     },
- 
- // нет свойтсва длины. попробовать задавать через ыуе// сделать обьектом
- 
     methods: {
-         anser(index){
-            console.log("shablonAnswers____");
-            console.log("shablonAnswers____" + this.shablonAnswers[index]);
-             
-           /* 
-            let ans = '';
-            for(let i = 0; i < this.shablonAnswers[index].length; i++){
-                let num = this.shablonAnswers[index][i];
-                ans = this.punckts[index].answers[num] + '' + ans  ;    
-           }*/
-          // return ans;
-           
+        anser(index){
+            if(this.shablonAnswers.length === this.punckts.length){ 
+                let ans = [];
+                let answers = this.punckts[index].answers;
+                let nomerAnswer = this.shablonAnswers[index];
+                if (this.punckts[index].type === 'radio'){
+                    return answers[nomerAnswer];
+                    }
+                else if (this.punckts[index].type === 'checkbox'){    
+                    nomerAnswer.forEach(function(num, i, nomerAnswer){ans.push(answers[num])})
+                    return ans.join(', ');
+                }
+            }     
        }
     }
 }
