@@ -1,20 +1,21 @@
 <template>
   <div id="app">
    
-   <div v-if = "numCarts  < punckts.length">
-    <app-cart
-      :title = punckts[numCarts].title
-      :answers = punckts[numCarts].answers
-      :typeInput = punckts[numCarts].type
-      :num = numCarts
-      :cartAnswer = cartAnswers[numCarts]
-    >      
+   
+    <app-cart  
+      v-show="numCart === index"
+      v-for="(punckt, index) in punckts" :key="index"
+      :punckt="punckt"
+      :shablonAnswer="shablonAnswers[index]"
+      @changeAnswers="getAnswers($event, index)" 
+    >
     </app-cart>
-    </div>
-    <div v-else>TABLE</div>
-    <button class = "btn btn-primary"
-      @click="numCarts++"
-    >ДАЛЬШЕ</button>
+    <app-table v-show="numCart === punckts.length"
+      :punckts="punckts"
+      :shablonAnswers="shablonAnswers"
+    >
+
+    </app-table>
    
   </div>
 </template>
@@ -22,11 +23,13 @@
 <script>
 
 import AppCart from './components/Cart'
+import AppTable from './components/Tableanswer'
 
 export default {
   name: 'app',
   components: {
-      AppCart
+      AppCart,
+      AppTable
   },
   created() {
     for(let i = 0; i <this.punckts.length; i++){
@@ -39,8 +42,8 @@ export default {
   },
   data () {
     return {
-      numCarts: 0, //номер карточки вопросов
-      cartAnswers:{}, //карта ответов
+      shablonAnswers:{},//шаблон ответов экзаменуемого
+      numCart:0,//номер карточки вопросов
       punckts: [
                 {
                   type: 'radio',
@@ -64,36 +67,24 @@ export default {
                   ]
                 }
               ]
+
     }
+  },
+  methods: {
+    
+    getAnswers(chekButton, index){
+
+        this.$set( this.shablonAnswers, index, chekButton)
+        //this.shablonAnswers.push(chekButton);
+        this.numCart++;
+        console.log('getAnswer' + this.shablonAnswers);
+    }
+    
   }
+  
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
